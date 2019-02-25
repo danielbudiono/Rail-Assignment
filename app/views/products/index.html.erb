@@ -1,0 +1,27 @@
+<h1>Listing products</h1>
+ 
+<table>
+  <tr>
+    <th>Name</th>
+  </tr>
+ 
+  <% @products.each do |product| %>
+    <tr>
+      <td><%= product.name %></td>
+      <td><%= link_to 'Show', product_path(product) %></td>
+    </tr>
+  <% end %>
+
+</table>
+
+
+<%= form_for :product, url: { action: :new }, method: :get do |f|   %>
+  <%= number_field_tag :a, params[:a] %>
+  <%= number_field_tag :b, params[:b] %>
+  <%= number_field_tag :c, params[:c] %>
+  <%= f.submit 'Calculate!' %>
+<% end %>
+
+<% unless @result.nil? %>
+  <p> = <%= @result %> </p>
+<% end %>
